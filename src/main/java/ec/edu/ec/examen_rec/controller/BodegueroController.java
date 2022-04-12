@@ -81,8 +81,12 @@ public class BodegueroController {
     @GetMapping("registrarInventario")
     public String registrarInventario(Inventario inventario, BindingResult result, Model modelo,
     RedirectAttributes redirectAttrs){
-        this.gestorService.ingresarProductos(inventario.getBodega().getNumero(), inventario.getProducto().getCodigoMaestro(),
-         inventario.getProducto().getStock());
+
+		for(Integer i = 0; i <= inventario.getProducto().getStock(); i++){
+			this.gestorService.ingresarProductos(inventario.getBodega().getNumero(), inventario.getProducto().getCodigoMaestro(),
+			i);
+		}
+       
         
         return "inventario_registrar"; 
 

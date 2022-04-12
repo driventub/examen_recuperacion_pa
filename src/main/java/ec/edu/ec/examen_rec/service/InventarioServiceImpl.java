@@ -20,13 +20,11 @@ public class InventarioServiceImpl implements IInventarioService {
 	
 	@Override
 	public Inventario buscar(Integer id) {
-		// TODO Auto-generated method stub
 		return this.inventarioRepo.buscar(id);
 	}
 
 	@Override
 	public List<Inventario> buscarTodos() {
-		// TODO Auto-generated method stub
 		return this.inventarioRepo.buscarTodos();
 	}
 

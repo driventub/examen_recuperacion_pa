@@ -18,5 +18,6 @@ public class GestorServiceImplTest {
     @Test
     void testIngresarProductos() {
         this.gestor.ingresarProductos("BUIO1", "0001A", 3);
+        
     }
 }

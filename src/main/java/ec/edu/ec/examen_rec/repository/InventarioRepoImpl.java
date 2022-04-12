@@ -6,9 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import ec.edu.ec.examen_rec.modelo.Inventario;
@@ -24,11 +23,13 @@ public class InventarioRepoImpl implements IInventarioRepo{
 	private EntityManager e;
 	
 	@Override
+	@Transactional(value = TxType.NOT_SUPPORTED)
 	public Inventario buscar(Integer id) {
 		return this.e.find(Inventario.class, id);
 	}
 
 	@Override
+	@Transactional(value = TxType.NOT_SUPPORTED)
 	public List<Inventario> buscarTodos() {
 		TypedQuery<Inventario> myTypedQuery = (TypedQuery<Inventario>) this.e
 				.createQuery("SELECT f FROM Inventario f    ",Inventario.class);

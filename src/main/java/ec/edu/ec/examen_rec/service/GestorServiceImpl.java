@@ -36,19 +36,19 @@ public class GestorServiceImpl implements IGestorService {
         
         p.setBodega(b);
         
-
-        for(Integer i = 0; i <= cantidad; i++){
+        // xq no funciona?, se manda como loop a insertar
+        // for(Integer i = 0; i <= cantidad; i++){
             
            
-            String c = p.getCodigoMaestro() + Integer.toString(i);
+            String c = p.getCodigoMaestro() + Integer.toString(cantidad);
             invent.setCodigoIndividual(c);
             invent.setProducto(p);
             invent.setBodega(b);
 
             this.inventarioService.insertar(invent);
-            
+            LOG.info(c);
 
-        }
+        // }
 
         
 
