@@ -6,6 +6,7 @@ import ec.edu.ec.examen_rec.modelo.Bodega;
 
 public interface IBodegaService {
 	public Bodega buscar(Integer id);
+	public Bodega buscarNumero(String numBodega);
 	public List<Bodega> buscarTodos();
 	public void actualizar(Bodega e);
 	public void eliminar(Integer id);

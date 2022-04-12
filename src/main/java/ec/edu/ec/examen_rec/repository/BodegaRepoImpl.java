@@ -24,6 +24,7 @@ public class BodegaRepoImpl implements IBodegaRepo{
 	private EntityManager e;
 	
 	@Override
+	
 	public Bodega buscar(Integer id) {
 		return this.e.find(Bodega.class, id);
 	}

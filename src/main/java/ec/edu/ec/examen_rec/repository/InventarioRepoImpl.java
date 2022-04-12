@@ -17,7 +17,7 @@ import ec.edu.ec.examen_rec.modelo.Inventario;
 @Transactional
 public class InventarioRepoImpl implements IInventarioRepo{
 	
-	private static final Logger LOG = LoggerFactory.getLogger(InventarioRepoImpl.class); 
+	
 	
 	
 	@PersistenceContext
@@ -54,5 +54,7 @@ public class InventarioRepoImpl implements IInventarioRepo{
 		this.e.persist(e);
 		
 	}
+
+	
 
 }

@@ -48,4 +48,10 @@ public class BodegaServiceImpl implements IBodegaService {
 		
 	}
 
+	@Override
+	public Bodega buscarNumero(String numBodega) {
+		
+		return this.estu.buscarNumero(numBodega);
+	}
+
 }

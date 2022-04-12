@@ -10,4 +10,5 @@ public interface IProductoService {
 	public void actualizar(Producto e);
 	public void eliminar(Integer id);
 	public void insertar(Producto e);
+	public Producto buscarCodigo(String codigo) ;
 }

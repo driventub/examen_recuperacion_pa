@@ -20,13 +20,13 @@ public class ProductoServiceImpl implements IProductoService {
 	
 	@Override
 	public Producto buscar(Integer id) {
-		// TODO Auto-generated method stub
+		
 		return this.estu.buscar(id);
 	}
 
 	@Override
 	public List<Producto> buscarTodos() {
-		// TODO Auto-generated method stub
+		
 		return this.estu.buscarTodos();
 	}
 
@@ -46,6 +46,12 @@ public class ProductoServiceImpl implements IProductoService {
 	public void insertar(Producto e) {
 		this.estu.insertar(e);
 		
+	}
+
+	@Override
+	public Producto buscarCodigo(String codigo) {
+		
+		return this.estu.buscarCodigo(codigo);
 	}
 
 	
