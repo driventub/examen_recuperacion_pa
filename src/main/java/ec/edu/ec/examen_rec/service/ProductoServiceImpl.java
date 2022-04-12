@@ -16,42 +16,42 @@ public class ProductoServiceImpl implements IProductoService {
 	// private static final Logger LOG = LoggerFactory.getLogger(ProductoServiceImpl.class); 
 
 	@Autowired
-	private IProductoRepo estu;
+	private IProductoRepo productoRepo;
 	
 	@Override
 	public Producto buscar(Integer id) {
 		
-		return this.estu.buscar(id);
+		return this.productoRepo.buscar(id);
 	}
 
 	@Override
 	public List<Producto> buscarTodos() {
 		
-		return this.estu.buscarTodos();
+		return this.productoRepo.buscarTodos();
 	}
 
 	@Override
 	public void actualizar(Producto e) {
-		this.estu.actualizar(e);
+		this.productoRepo.actualizar(e);
 		
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		this.estu.eliminar(id);
+		this.productoRepo.eliminar(id);
 		
 	}
 
 	@Override
 	public void insertar(Producto e) {
-		this.estu.insertar(e);
+		this.productoRepo.insertar(e);
 		
 	}
 
 	@Override
 	public Producto buscarCodigo(String codigo) {
 		
-		return this.estu.buscarCodigo(codigo);
+		return this.productoRepo.buscarCodigo(codigo);
 	}
 
 	

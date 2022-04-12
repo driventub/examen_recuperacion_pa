@@ -12,7 +12,7 @@
 
 <body>
 	<h1>Registro Inventario</h1>
-	<form th:action="@{/bodeguero/insertarInventario}" th:object="${inventario}" method="GET">
+	<form th:action="@{/bodeguero/registrarInventario}" th:object="${inventario}" method="GET">
 		<table>
 			<tr>
 				<td>
@@ -35,7 +35,7 @@
 					<label>Cantidad :</label>
 				</td>
 				<td>
-					<input type="text" id="cant" th:field="*{producto.cantidad}">
+					<input type="text" id="cant" th:field="*{producto.stock}">
 				</td>
 			</tr>
 			

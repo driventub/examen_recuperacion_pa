@@ -31,10 +31,12 @@
 		</thead>
 
 		<tbody>
-            <tr th:each="producto : ${lProducto}">
+            <tr th:each="producto : ${listaProductos}">
                 
-				<form  action="#" th:action="@{/bodeguero/borrar/{id}(id = ${producto.id})}"
-					th:object="${producto}" th:method="delete">
+				
+				<form  action="#" th:action="@{/bodeguero/verificarProducto}"
+				
+					th:object="${producto}" th:method="GET">
 
 					<td th:text="${producto.nombre}"></td>
 					<td th:text="${producto.codigoMaestro}"></td>
@@ -42,7 +44,7 @@
 					<td th:text="${producto.categoria}"></td>
 					
 					<td>
-						<input type="submit" value="Borrar">
+						<input type="submit" value="Eliminar">
 					</td>
 
                 

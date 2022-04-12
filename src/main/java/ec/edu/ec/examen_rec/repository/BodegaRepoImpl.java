@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
+
 import org.springframework.stereotype.Repository;
 
 import ec.edu.ec.examen_rec.modelo.Bodega;
@@ -17,18 +17,19 @@ import ec.edu.ec.examen_rec.modelo.Bodega;
 @Transactional
 public class BodegaRepoImpl implements IBodegaRepo{
 	
-	// private static final Logger LOG = LoggerFactory.getLogger(BodegaRepoImpl.class); 
+	private static final Logger LOG = Logger.getLogger(BodegaRepoImpl.class); 
 	
 	
 	@PersistenceContext
 	private EntityManager e;
 	
 	@Override
-	
+	// Not Supported
 	public Bodega buscar(Integer id) {
 		return this.e.find(Bodega.class, id);
 	}
 
+	// Not Supported
 	@Override
 	public List<Bodega> buscarTodos() {
 		TypedQuery<Bodega> myTypedQuery = (TypedQuery<Bodega>) this.e
@@ -37,12 +38,14 @@ public class BodegaRepoImpl implements IBodegaRepo{
 		
 	}
 
+	// Mandatory
 	@Override
 	public void actualizar(Bodega e) {
 		this.e.merge(e);
 		
 	}
 
+	// Mandatory
 	@Override
 	public void eliminar(Integer id) {
 		Bodega gBorrar = this.buscar(id);
@@ -50,12 +53,14 @@ public class BodegaRepoImpl implements IBodegaRepo{
 		
 	}
 
+	// Mandatory
 	@Override
 	public void insertar(Bodega e) {
 		this.e.persist(e);
 		
 	}
 
+	// Mandatory
 	@Override
 	public Bodega buscarNumero(String numBodega) {
 		TypedQuery<Bodega> myTypedQuery = (TypedQuery<Bodega>) this.e

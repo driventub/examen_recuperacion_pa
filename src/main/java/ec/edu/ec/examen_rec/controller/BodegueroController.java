@@ -1,5 +1,7 @@
 package ec.edu.ec.examen_rec.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,7 +67,7 @@ public class BodegueroController {
         producto.setStock(0);
 		this.productoService.insertar(producto);
 
-		return "listar";
+		return "lista";
 	}
 
     // 1.c
@@ -76,7 +78,7 @@ public class BodegueroController {
         return "inventario_obtener";
     }
 
-    @PutMapping("registrarInventario")
+    @GetMapping("registrarInventario")
     public String registrarInventario(Inventario inventario, BindingResult result, Model modelo,
     RedirectAttributes redirectAttrs){
         this.gestorService.ingresarProductos(inventario.getBodega().getNumero(), inventario.getProducto().getCodigoMaestro(),
@@ -89,39 +91,36 @@ public class BodegueroController {
 
     // 1.d
 
-    @GetMapping("/buscar")
-    public String buscarProducto(Producto producto, BindingResult result, Model modelo,
-    RedirectAttributes redirectAttrs){
-        Producto p = this.productoService.buscar(producto.getId());
-        modelo.addAttribute("producto", p);
-        return "listar";
-    }
-
-
-    @DeleteMapping("/borrar")
-    public String eliminarProducto(Producto producto, BindingResult result, Model modelo,
-    RedirectAttributes redirectAttrs){
-        this.productoService.eliminar(producto.getId());
-        return "redirect:/bodeguero/buscar";
-    }
-
-
-    @RequestMapping("/buscar/{idProducto}")
-	@GetMapping("/buscar/{idProducto}")
-	public String obtenerUsuario(@PathVariable("idProducto") Integer idProducto, Model modelo) {
-
-		Producto produ = this.productoService.buscar(idProducto);
-
-		modelo.addAttribute("estu", produ);
-		return "estudiante";
+    
+	@GetMapping("buscar")
+	
+	public String buscarTodos(Model modelo) {
+		List<Producto> listaProductos = this.productoService.buscarTodos();
+		modelo.addAttribute("listaProductos", listaProductos);
+		return "lista";
 	}
 
-    @DeleteMapping("borrar/{idProducto}")
+    
+
+    @DeleteMapping("verificarProducto/{idProducto}")
+	public String verificarProducto(@PathVariable("idProducto") Integer idProducto, Model modelo) {
+        Producto producto = this.productoService.buscar(idProducto);
+        // Si el stock es igual a 0, significa que no se ha agregado ningun producto al inventario
+        
+        modelo.addAttribute("producto", producto);
+       
+
+
+		return "producto_verificar";
+	}
+    @DeleteMapping("eliminar/{idProducto}")
 	public String eliminarProducto(@PathVariable("idProducto") Integer idProducto, Model modelo) {
-		this.productoService.eliminar(idProducto);
-//		List<Producto> listaProductos = this.estuService.buscarTodos();
-//		modelo.addAttribute("estudiantes", listaProductos);
-		return "redirect:/estudiantes/";
+		
+        
+        this.productoService.eliminar(idProducto);
+
+
+		return "producto_borrado";
 	}
 
 

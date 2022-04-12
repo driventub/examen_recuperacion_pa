@@ -16,42 +16,42 @@ public class BodegaServiceImpl implements IBodegaService {
 	// private static final Logger LOG = LoggerFactory.getLogger(BodegaServiceImpl.class); 
 
 	@Autowired
-	private IBodegaRepo estu;
+	private IBodegaRepo bodegaRepo;
 	
 	@Override
 	public Bodega buscar(Integer id) {
-		// TODO Auto-generated method stub
-		return this.estu.buscar(id);
+		
+		return this.bodegaRepo.buscar(id);
 	}
 
 	@Override
 	public List<Bodega> buscarTodos() {
-		// TODO Auto-generated method stub
-		return this.estu.buscarTodos();
+		
+		return this.bodegaRepo.buscarTodos();
 	}
 
 	@Override
 	public void actualizar(Bodega e) {
-		this.estu.actualizar(e);
+		this.bodegaRepo.actualizar(e);
 		
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		this.estu.eliminar(id);
+		this.bodegaRepo.eliminar(id);
 		
 	}
 
 	@Override
 	public void insertar(Bodega e) {
-		this.estu.insertar(e);
+		this.bodegaRepo.insertar(e);
 		
 	}
 
 	@Override
 	public Bodega buscarNumero(String numBodega) {
 		
-		return this.estu.buscarNumero(numBodega);
+		return this.bodegaRepo.buscarNumero(numBodega);
 	}
 
 }
